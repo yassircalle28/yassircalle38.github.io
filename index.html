@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MOTO LIVE 360 - Tu próxima aventura comienza en vivo.">
+  <title>MOTO LIVE 360 | Live Shopping</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="MOTO LIVE 360 inicio">
+        <span class="brand-mark">M<span>360</span></span>
+        <span><strong>MOTO LIVE 360</strong><small>Tu próxima aventura comienza en vivo</small></span>
+      </a>
+      <div class="top-status"><span class="live-dot"></span> ESTUDIO DE TRANSMISIÓN <span class="status-divider"></span><span id="headerClock">--:--:--</span></div>
+      <div class="profile-switch">
+        <span class="profile-label">VISTA</span>
+        <button class="mode-btn active" data-mode="buyer">Comprador</button>
+        <button class="mode-btn" data-mode="seller">Vendedor</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <aside class="panel chat-panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">COMUNIDAD</span><h2>Chat en vivo</h2></div>
+          <span class="online-pill"><i></i><b id="chatOnline">128</b> conectados</span>
+        </div>
+        <div class="chat-live-label"><span class="live-dot"></span> CONVERSACIÓN EN DIRECTO</div>
+        <div class="chat-messages" id="chatMessages" aria-live="polite">
+          <div class="system-message">Bienvenido a MOTO LIVE 360. ¡Pregunta todo lo que quieras!</div>
+        </div>
+        <form class="chat-compose" id="chatForm">
+          <label class="sr-only" for="chatInput">Escribe un comentario</label>
+          <input id="chatInput" maxlength="180" placeholder="Escribe un comentario..." autocomplete="off">
+          <button class="send-btn" type="submit" aria-label="Enviar comentario">➤</button>
+        </form>
+        <div class="chat-actions">
+          <span>Participa en la transmisión</span>
+          <button class="reaction-btn" id="chatHeart" type="button" title="Enviar corazón">♥</button>
+          <button class="reaction-btn" id="chatFire" type="button" title="Enviar fuego">🔥</button>
+        </div>
+      </aside>
+
+      <section class="center-column">
+        <section class="stream-card panel">
+          <div class="stream-topline">
+            <div class="live-badge" id="liveBadge"><span></span> EN VIVO</div>
+            <div class="viewer-count">◉ <strong id="viewerCount">1.284</strong> <span>viendo</span></div>
+            <button class="icon-button" id="shareBtn" type="button" title="Copiar enlace">↗</button>
+          </div>
+          <div class="stream-stage" id="streamStage">
+            <div class="stage-image-wrap">
+              <img id="mainBikeImage" src="assets/images/foto-1.jpeg" alt="Fotografía de la motocicleta seleccionada" onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';">
+              <div class="photo-placeholder" id="photoPlaceholder">
+                <div class="placeholder-icon">＋</div>
+                <strong>FOTO 1</strong>
+                <span>Coloca tu imagen en<br><code>assets/images/foto-1.jpeg</code></span>
+              </div>
+            </div>
+            <div class="stage-shade"></div>
+            <div class="stream-caption">
+              <span class="seller-avatar">ML</span>
+              <div><strong>MOTO LIVE 360</strong><smallS>Especialistas en off-road · Transmisión demostrativa</small></div>
+            </div>
+            <div class="stage-product-tag"><span id="stageBrand">YAMAHA</span><strong id="stageModel">YZ250F</strong><small id="stageCategory">MOTOCROSS / CROSS</small></div>
+            <div class="floating-reactions" id="floatingReactions"></div>
+            <button class="stage-heart" id="stageHeart" type="button" aria-label="Me gusta">♥</button>
+            <div class="stage-carousel-controls">
+              <button id="prevBike" type="button" aria-label="Motocicleta anterior">‹</button>
+              <span id="carouselPosition">01 / 07</span>
+              <button id="nextBike" type="button" aria-label="Siguiente motocicleta">›</button>
+            </div>
+          </div>
+          <div class="stream-info">
+            <div class="stream-product-copy">
+              <div class="product-kicker"><span class="orange-line"></span><span id="productBrand">YAMAHA</span> <span class="dot-sep">•</span> <span id="productCategory">MOTOCROSS / CROSS</span></div>
+              <h1 id="productTitle">YZ250F</h1>
+              <p id="productDescription">Potencia equilibrada, respuesta precisa y tecnología de competición para dominar cada curva.</p>
+              <div class="spec-row" id="productSpecs">
+                <span>4 tiempos</span><span>250 cc</span><span>Inyección electrónica</span>
+              </div>
+            </div>
+            <div class="price-block"><small>PRECIO DE DEMOSTRACIÓN</small><strong id="productPrice">US$ 8.900</strong><span id="stockLabel" class="stock-label">● Disponible · 3 unidades</span></div>
+          </div>
+          <div class="stream-cta">
+            <button class="btn btn-outline" id="highlightBtn" type="button">✦ Destacar producto</button>
+            <button class="btn btn-primary" id="reserveQuickBtn" type="button">Consultar / reservar <span>→</span></button>
+          </div>
+          <div class="stream-footnote">* Precios, existencias y especificaciones ficticios para demostración académica.</div>
+        </section>
+
+        <section class="seller-console panel" id="sellerConsole">
+          <div class="console-heading"><div><span class="eyebrow">CENTRO DE CONTROL</span><h2>Panel del vendedor</h2></div><span class="demo-tag">MODO DEMOSTRACIÓN</span></div>
+          <div class="console-grid">
+            <label>Presentar motocicleta<select id="sellerBikeSelect"></select></label>
+            <div class="console-buttons"><button class="btn btn-dark" id="sellerHighlight" type="button">✦ Destacar</button><button class="btn btn-dark" id="offerBtn" type="button">％ Publicar oferta</button></div>
+            <div class="console-buttons"><button class="btn btn-live" id="streamToggle" type="button">■ Finalizar transmisión</button><button class="btn btn-dark" id="showRequests" type="button">▤ Ver solicitudes <b id="requestCount">0</b></button></div>
+          </div>
+          <div class="seller-feedback" id="sellerFeedback">La transmisión está activa. Selecciona un modelo para presentarlo.</div>
+        </section>
+      </section>
+
+      <aside class="right-column">
+        <section class="panel notifications-panel">
+          <div class="panel-heading"><div><span class="eyebrow">ACTIVIDAD COMERCIAL</span><h2>Solicitudes <span class="count-bubble" id="pendingCount">0</span></h2></div><button class="text-button" id="clearNotices" type="button">Limpiar</button></div>
+          <div class="notification-list" id="notificationList"><div class="empty-state"><span>◷</span><strong>Sin solicitudes todavía</strong><small>Las nuevas reservas aparecerán aquí.</small></div></div>
+        </section>
+        <section class="panel catalog-panel">
+          <div class="panel-heading catalog-heading"><div><span class="eyebrow">PIT LANE</span><h2>Catálogo <span class="catalog-count" id="catalogCount">07 MODELOS</span></h2></div></div>
+          <div class="filter-grid">
+            <label>Marca<select id="brandFilter"><option value="">Todas</option><option>Yamaha</option><option>Suzuki</option><option>Honda</option><option>KTM</option></select></label>
+            <label>Categoría<select id="categoryFilter"><option value="">Todas</option><option>Motocross / Cross</option><option>Enduro</option><option>Hard Enduro</option></select></label>
+            <label class="availability-filter">Disponibilidad<select id="availabilityFilter"><option value="">Todas</option><option value="available">Disponible</option><option value="unavailable">Agotada</option></select></label>
+          </div>
+          <div class="catalog-list" id="catalogList"></div>
+        </section>
+      </aside>
+    </main>
+
+    <section class="bottom-grid">
+      <section class="panel request-panel" id="requestPanel">
+        <div class="panel-heading"><div><span class="eyebrow">ATENCIÓN PERSONALIZADA</span><h2>Solicitud de información / compra</h2></div><span class="secure-note">◎ SIMULACIÓN SEGURA</span></div>
+        <form id="requestForm" novalidate>
+          <div class="form-grid">
+            <label>Nombre completo <input name="fullName" required minlength="3" maxlength="70" placeholder="Ej. María Pérez"></label>
+            <label>Usuario de TikTok <input name="tiktok" required pattern="^@?[A-Za-z0-9._]{2,24}$" placeholder="@usuario"></label>
+            <label>Teléfono <input name="phone" required type="tel" pattern="[0-9+() -]{7,20}" placeholder="+591 70000000"></label>
+            <label>Motocicleta <select name="bike" id="formBikeSelect" required></select></label>
+            <label>Marca <input name="brand" id="formBrand" readonly required></label>
+            <label>Modelo <input name="model" id="formModel" readonly required></label>
+            <label>Categoría <input name="category" id="formCategory" readonly required></label>
+            <label>Variante / configuración <select name="variant" id="variantSelect" required><option value="">Selecciona una variante</option><option>Estándar</option><option>Competición</option><option>Preparación personalizada</option></select></label>
+            <label>Tipo de operación <select name="operation" required><option value="">Selecciona una opción</option><option value="Reserva">Reserva</option><option value="Solicitud de compra">Solicitud de compra</option><option value="Consulta">Consulta de información</option></select></label>
+            <label>Cantidad <select name="quantity" id="quantitySelect"><option>1</option><option>2</option><option>3</option></select></label>
+            <label class="full-width">Comentario adicional <textarea name="comment" rows="2" maxlength="300" placeholder="Cuéntanos qué necesitas saber..."></textarea></label>
+          </div>
+          <div class="form-footer"><p>Al enviar, crearás una solicitud de demostración. <strong>No se realizará ningún pago.</strong></p><button class="btn btn-primary" type="submit">Enviar solicitud <span>→</span></button></div>
+          <div class="form-feedback" id="formFeedback" role="status"></div>
+        </form>
+      </section>
+      <section class="panel log-panel">
+        <div class="panel-heading"><div><span class="eyebrow">REGISTRO EN TIEMPO REAL</span><h2>Bitácora de eventos</h2></div><span class="log-live">● LIVE LOG</span></div>
+        <div class="log-toolbar"><label class="sr-only" for="logFilter">Filtrar eventos</label><select id="logFilter"><option value="">Todos los eventos</option><option value="DÍA 1">Día 1 · Interacción</option><option value="DÍA 2">Día 2 · Formularios</option><option value="CLICK">CLICK</option><option value="DBLCLICK">DBLCLICK</option><option value="KEYUP">KEYUP</option><option value="CHANGE">CHANGE</option><option value="SUBMIT">SUBMIT</option></select><button class="text-button" id="exportLog" type="button">↓ CSV</button><button class="text-button danger-text" id="clearLog" type="button">Vaciar</button></div>
+        <div class="log-list" id="logList" aria-live="polite"></div>
+        <div class="log-footer"><span><i></i> Registro local del navegador</span><span id="logTotal">0 EVENTOS</span></div>
+      </section>
+    </section>
+    <footer class="footer"><span>© 2026 MOTO LIVE 360</span><span>PLATAFORMA DEMOSTRATIVA · SIN PAGOS NI TRANSMISIÓN REAL</span><span>HECHO PARA VIVIR EL OFF-ROAD <b>↗</b></span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="detailsModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close-modal type="button" aria-label="Cerrar">×</button>
+      <div class="modal-photo"><img id="modalImage" src="assets/images/foto-1.jpeg" alt="Fotografía de motocicleta"><div id="modalPhotoPlaceholder" class="modal-placeholder">FOTO 1<br><small>assets/images/foto-1.jpeg</small></div></div>
+      <div class="modal-content"><span class="eyebrow" id="modalBrand">YAMAHA</span><h2 id="modalTitle">YZ250F</h2><p id="modalDescription"></p><div class="modal-price" id="modalPrice"></div><div class="modal-specs" id="modalSpecs"></div><div class="modal-actions"><button class="btn btn-outline" id="modalSelect" type="button">Ver en transmisión</button><button class="btn btn-primary" id="modalReserve" type="button">Solicitar / reservar →</button></div></div>
+    </div>
+  </div>
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
